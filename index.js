@@ -1,10 +1,14 @@
-// test if i can even access api
-axios
-  .get('https://statsapi.web.nhl.com/api/v1/teams')
-  .then(response => {
-    console.log(response);
-  })
+function cardCreator() {
+  const mainCardDiv = document.createElement('div');
+  mainCardDiv.classList.add('mainCardContain');
 
-  let test = function() {console.log('hey')};
+  return mainCardDiv;
+} 
 
-  test();
+let pageContainer = document.querySelector('.page-container');
+
+// axios
+//   .get('https://statsapi.web.nhl.com/api/v1/teams')
+//   .then(response => {
+//     console.log(response.data.teams);
+//   })
