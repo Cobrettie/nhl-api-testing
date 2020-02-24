@@ -20,15 +20,22 @@ function cardCreator(team, location, firstYear) {
   return singleCardContainer;
 } 
 
-let cardsContainer = document.querySelector('.cardsContainer');
+const cardsContainer = document.querySelector('.cardsContainer');
+const pageContainer = document.querySelector('.page-container');
 
 axios
   .get('https://statsapi.web.nhl.com/api/v1/teams')
   .then(response => {
     let teams = response.data.teams;
-    console.log(response);
     teams.forEach(item => {
       let card = cardCreator(item.name, item.locationName, item.firstYearOfPlay);
       cardsContainer.appendChild(card);
     })
+    return axios.get('https://statsapi.web.nhl.com/api/v1/teams')
   })
+  .then(response => {
+    const nhlCopyright = document.createElement('p');
+    nhlCopyright.textContent = `Official Copyright: ${response.data.copyright}`;
+    pageContainer.appendChild(nhlCopyright);
+  })
+// nhlCopyright.textContent = `NHL Copyright: ${}`;
