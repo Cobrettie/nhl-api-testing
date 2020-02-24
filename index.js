@@ -1,25 +1,30 @@
-function cardCreator(team) {
-  const mainCardDiv = document.createElement('div');
-  mainCardDiv.classList.add('mainCardContain');
+function cardCreator(team, firstYear) {
+  const singleCardContainer = document.createElement('div');
+  singleCardContainer.classList.add('singleCardContain');
 
   const singleCard = document.createElement('div');
   singleCard.classList.add('singleCard');
-  singleCard.textContent = team;
+  singleCard.textContent = `Team: ${team}`;
 
-  mainCardDiv.appendChild(singleCard);
+  const firstYearOfPlay = document.createElement('p');
+  firstYearOfPlay.textContent = `First Year of Play: ${firstYear}`;
 
-  return mainCardDiv;
+  // append children
+  singleCard.appendChild(firstYearOfPlay);
+  singleCardContainer.appendChild(singleCard);
+
+  return singleCardContainer;
 } 
 
-let pageContainer = document.querySelector('.page-container');
+let cardsContainer = document.querySelector('.cardsContainer');
 
 axios
   .get('https://statsapi.web.nhl.com/api/v1/teams')
   .then(response => {
     let teams = response.data.teams;
+    console.log(response);
     teams.forEach(item => {
-      let card = cardCreator(item.name);
-      console.log(teams);
-      pageContainer.appendChild(card);
+      let card = cardCreator(item.name, item.firstYearOfPlay);
+      cardsContainer.appendChild(card);
     })
   })

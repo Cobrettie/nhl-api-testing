@@ -1,3 +1,22 @@
 nav ul li {
   list-style-type: none;
 }
+
+.cardsContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.singleCardContain {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.singleCard {
+  width: 80%;
+  text-align: center;
+  margin: 0 auto;
+}
