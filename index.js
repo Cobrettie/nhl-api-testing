@@ -1,3 +1,7 @@
+const pageContainer = document.querySelector('.page-container');
+const cardsContainer = document.querySelector('.cardsContainer');
+const pageFooter = document.querySelector('.footer');
+
 function cardCreator(team, location, firstYear) {
   const singleCardContainer = document.createElement('div');
   singleCardContainer.classList.add('singleCardContain');
@@ -20,9 +24,6 @@ function cardCreator(team, location, firstYear) {
   return singleCardContainer;
 } 
 
-const cardsContainer = document.querySelector('.cardsContainer');
-const pageContainer = document.querySelector('.page-container');
-
 axios
   .get('https://statsapi.web.nhl.com/api/v1/teams')
   .then(response => {
@@ -36,6 +37,5 @@ axios
   .then(response => {
     const nhlCopyright = document.createElement('p');
     nhlCopyright.textContent = `Official Copyright: ${response.data.copyright}`;
-    pageContainer.appendChild(nhlCopyright);
+    pageFooter.appendChild(nhlCopyright);
   })
-// nhlCopyright.textContent = `NHL Copyright: ${}`;
