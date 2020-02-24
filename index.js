@@ -1,4 +1,4 @@
-function cardCreator(team, firstYear) {
+function cardCreator(team, location, firstYear) {
   const singleCardContainer = document.createElement('div');
   singleCardContainer.classList.add('singleCardContain');
 
@@ -9,7 +9,11 @@ function cardCreator(team, firstYear) {
   const firstYearOfPlay = document.createElement('p');
   firstYearOfPlay.textContent = `First Year of Play: ${firstYear}`;
 
+  const teamLocation = document.createElement('p');
+  teamLocation.textContent = `Team Location: ${location}`
+
   // append children
+  singleCard.appendChild(teamLocation);
   singleCard.appendChild(firstYearOfPlay);
   singleCardContainer.appendChild(singleCard);
 
@@ -24,7 +28,7 @@ axios
     let teams = response.data.teams;
     console.log(response);
     teams.forEach(item => {
-      let card = cardCreator(item.name, item.firstYearOfPlay);
+      let card = cardCreator(item.name, item.locationName, item.firstYearOfPlay);
       cardsContainer.appendChild(card);
     })
   })
