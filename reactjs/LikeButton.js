@@ -21,7 +21,5 @@ class LikeButton extends React.Component {
   }
 }
 
-console.log('rer');
-
 const domContainer = document.querySelector('.reactjs-container');
 ReactDOM.render(e(LikeButton), domContainer);
